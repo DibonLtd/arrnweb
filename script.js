@@ -1,24 +1,10 @@
-const SITE_ASSETS = {
-  logo: "https://arri.cloudpepper.site/web/image/website/1/logo/ARRI?unique=be7091d",
-  footerLogo: "https://arri.cloudpepper.site/web/image/1173-f80f7a95/aarlogo.webp",
-};
-
 const NAV_ITEMS = [
-  { type: "link", label: "Home", href: "index.html", page: "home" },
-  {
-    type: "group",
-    label: "About Us",
-    group: "about",
-    items: [
-      { label: "Our Team", href: "our-team.html", page: "our-team" },
-      { label: "Mission & Vision", href: "mission-and-vision.html", page: "mission-and-vision" },
-    ],
-  },
-  { type: "link", label: "Patients", href: "patients.html", page: "patients" },
-  { type: "link", label: "CKD Information", href: "nephrology.html", page: "nephrology" },
-  { type: "link", label: "Sponsors", href: "sponsors.html", page: "sponsors" },
-  { type: "link", label: "Contact us", href: "contactus.html", page: "contactus" },
-  { type: "link", label: "Registration", href: "registration.html", page: "registration", navClass: "registration" },
+  { label: "Home", href: "index.html", pages: ["home"] },
+  { label: "About Us", href: "mission-and-vision.html", pages: ["mission-and-vision"] },
+  { label: "Sponsors", href: "sponsors.html", pages: ["sponsors"] },
+  { label: "Studies", href: "patients.html", pages: ["patients", "nephrology", "autoimmune", "cardiology"] },
+  { label: "Our Team", href: "our-team.html", pages: ["our-team"] },
+  { label: "Contact", href: "contactus.html", pages: ["contactus"] },
 ];
 
 const OPTION_SETS = {
@@ -71,24 +57,29 @@ function renderChrome() {
 function createHeader(page) {
   return `
     <header class="site-header" id="top">
-      <div class="nav-shell">
-        <div class="nav-top">
-          <a class="brand" href="index.html" aria-label="ARRN home">
-            <img src="${SITE_ASSETS.logo}" alt="ARRN">
-          </a>
-          <nav class="desktop-nav" aria-label="Main">
-            ${NAV_ITEMS.map((item) => renderDesktopNavItem(item, page)).join("")}
-          </nav>
-          <button class="mobile-toggle" type="button" aria-expanded="false" aria-controls="mobile-nav" aria-label="Open navigation">
-            ${menuIcon()}
-          </button>
+      <div class="container">
+        <div class="nav-shell">
+          <div class="nav-top">
+            <a class="brand" href="index.html" aria-label="ARRI home">
+              <span class="brand__mark">ARRI</span>
+              <span class="brand__copy">Africa Renal Research Network</span>
+            </a>
+            <nav class="desktop-nav" aria-label="Main">
+              ${NAV_ITEMS.map((item) => renderDesktopNavItem(item, page)).join("")}
+            </nav>
+            <a class="nav-cta ${page === "registration" ? "is-active" : ""}" href="registration.html" ${page === "registration" ? 'aria-current="page"' : ""}>Register for Clinical Trial</a>
+            <button class="mobile-toggle" type="button" aria-expanded="false" aria-controls="mobile-nav" aria-label="Open navigation">
+              ${menuIcon()}
+            </button>
+          </div>
         </div>
       </div>
       <div class="mobile-backdrop" data-menu-close></div>
       <aside class="mobile-panel" id="mobile-nav" aria-label="Mobile navigation">
         <div class="mobile-panel__header">
-          <a class="brand" href="index.html" aria-label="ARRN home">
-            <img src="${SITE_ASSETS.logo}" alt="ARRN">
+          <a class="brand" href="index.html" aria-label="ARRI home">
+            <span class="brand__mark">ARRI</span>
+            <span class="brand__copy">Africa Renal Research Network</span>
           </a>
           <button class="mobile-close" type="button" aria-label="Close navigation">
             ${closeIcon()}
@@ -96,6 +87,7 @@ function createHeader(page) {
         </div>
         <nav class="mobile-nav" aria-label="Mobile">
           ${NAV_ITEMS.map((item) => renderMobileNavItem(item, page)).join("")}
+          <a class="mobile-cta ${page === "registration" ? "is-active" : ""}" href="registration.html" ${page === "registration" ? 'aria-current="page"' : ""}>Register for Clinical Trial</a>
         </nav>
       </aside>
     </header>
@@ -107,29 +99,33 @@ function createFooter() {
     <footer class="site-footer">
       <div class="container">
         <div class="footer-shell">
-          <div class="footer-top">
+          <div class="footer-grid">
             <div class="footer-brand">
-              <a href="index.html" aria-label="ARRN home">
-                <img src="${SITE_ASSETS.footerLogo}" alt="Africa Renal Research Network">
-              </a>
-              <p>Suite 4.3, 4th Floor • Anderson Building • Nairobi Hospital • Nairobi, Kenya</p>
+              <p class="footer-brand__name">ARRI</p>
+              <p class="footer-copy">Africa Renal Research Network — bridging global pharmaceutical innovation and African clinical expertise.</p>
             </div>
-            <div class="footer-socials" aria-label="Social media">
-              <a class="social-link" href="#" aria-label="Facebook">${facebookIcon()}</a>
-              <a class="social-link" href="#" aria-label="X">${xIcon()}</a>
-              <a class="social-link" href="#" aria-label="LinkedIn">${linkedinIcon()}</a>
+            <div>
+              <h2 class="footer-title">Quick Links</h2>
+              <nav class="footer-links" aria-label="Quick Links">
+                <a href="mission-and-vision.html">About Us</a>
+                <a href="patients.html">Studies</a>
+                <a href="sponsors.html">Sponsors</a>
+                <a href="our-team.html">Our Team</a>
+                <a href="contactus.html">Contact</a>
+              </nav>
+            </div>
+            <div>
+              <h2 class="footer-title">Contact</h2>
+              <div class="footer-contact">
+                <a href="mailto:info@arri-network.org">info@arri-network.org</a>
+                <a href="tel:+254700000000">+254 700 000 000</a>
+                <p>Nairobi, Kenya</p>
+              </div>
             </div>
           </div>
-          <div class="footer-bottom">
-            <p>Copyright © Africa Renal Research Network</p>
-            <div class="footer-links">
-              <a href="tel:+254718930065">+254 718 930 065</a>
-              <a href="mailto:info@arri.ke">info@arri.ke</a>
-            </div>
-            <a class="scroll-top" href="#top" aria-label="Scroll To Top">
-              ${arrowUpIcon()}
-            </a>
-          </div>
+        </div>
+        <div class="footer-bottom">
+          <p>© 2026 Africa Renal Research Network. All rights reserved.</p>
         </div>
       </div>
     </footer>
@@ -220,49 +216,13 @@ function initLogoMarquees() {
 }
 
 function renderDesktopNavItem(item, page) {
-  if (item.type === "link") {
-    const active = item.page === page;
-    const itemClass = item.navClass ? ` nav-link--${item.navClass}` : "";
-    return `<a class="nav-link${itemClass} ${active ? "is-active" : ""}" href="${item.href}" ${active ? 'aria-current="page"' : ""}>${item.label}</a>`;
-  }
-
-  const active = item.items.some((child) => child.page === page);
-  return `
-    <details class="nav-group ${active ? "is-active" : ""}" ${active ? "open" : ""}>
-      <summary>${item.label}</summary>
-      <div class="dropdown-menu">
-        ${item.items
-          .map((child) => {
-            const childActive = child.page === page;
-            return `<a class="dropdown-link ${childActive ? "is-active" : ""}" href="${child.href}" ${childActive ? 'aria-current="page"' : ""}>${child.label}</a>`;
-          })
-          .join("")}
-      </div>
-    </details>
-  `;
+  const active = item.pages.includes(page);
+  return `<a class="nav-link ${active ? "is-active" : ""}" href="${item.href}" ${active ? 'aria-current="page"' : ""}>${item.label}</a>`;
 }
 
 function renderMobileNavItem(item, page) {
-  if (item.type === "link") {
-    const active = item.page === page;
-    const itemClass = item.navClass ? ` mobile-link--${item.navClass}` : "";
-    return `<a class="mobile-link${itemClass} ${active ? "is-active" : ""}" href="${item.href}" ${active ? 'aria-current="page"' : ""}>${item.label}</a>`;
-  }
-
-  const active = item.items.some((child) => child.page === page);
-  return `
-    <details class="mobile-group ${active ? "is-active" : ""}" ${active ? "open" : ""}>
-      <summary>${item.label}</summary>
-      <div class="mobile-group__items">
-        ${item.items
-          .map((child) => {
-            const childActive = child.page === page;
-            return `<a class="${childActive ? "is-active" : ""}" href="${child.href}" ${childActive ? 'aria-current="page"' : ""}>${child.label}</a>`;
-          })
-          .join("")}
-      </div>
-    </details>
-  `;
+  const active = item.pages.includes(page);
+  return `<a class="mobile-link ${active ? "is-active" : ""}" href="${item.href}" ${active ? 'aria-current="page"' : ""}>${item.label}</a>`;
 }
 
 function initMenu() {
