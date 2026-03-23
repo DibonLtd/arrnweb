@@ -42,6 +42,7 @@ const OPTION_SETS = {
 
 document.addEventListener("DOMContentLoaded", () => {
   renderChrome();
+  initLogoMarquees();
   initMenu();
   initRevealObserver();
   populateGeneratedFields();
@@ -152,6 +153,37 @@ function createRegistrationBand() {
       </div>
     </section>
   `;
+}
+
+function initLogoMarquees() {
+  const grids = document.querySelectorAll(".logo-grid");
+
+  grids.forEach((grid) => {
+    if (grid.dataset.marqueeReady === "true") {
+      return;
+    }
+
+    const cells = Array.from(grid.children);
+
+    if (cells.length < 2) {
+      return;
+    }
+
+    const panel = grid.closest(".logo-panel");
+
+    if (panel) {
+      panel.classList.add("logo-panel--marquee");
+    }
+
+    grid.classList.add("logo-grid--marquee");
+    grid.dataset.marqueeReady = "true";
+
+    cells.forEach((cell) => {
+      const clone = cell.cloneNode(true);
+      clone.setAttribute("aria-hidden", "true");
+      grid.appendChild(clone);
+    });
+  });
 }
 
 function renderDesktopNavItem(item, page) {

@@ -563,12 +563,32 @@ main {
   padding: clamp(1.5rem, 3vw, 2.5rem);
 }
 
+.logo-panel--marquee {
+  overflow: hidden;
+}
+
 .logo-grid {
   display: grid;
   grid-template-columns: repeat(4, minmax(0, 1fr));
   gap: 1.25rem;
   align-items: center;
   margin-top: 1.75rem;
+}
+
+.logo-grid--marquee {
+  --logo-gap: 1.25rem;
+  display: flex;
+  gap: var(--logo-gap);
+  align-items: center;
+  width: max-content;
+  max-width: none;
+  grid-template-columns: none;
+  animation: logo-marquee 28s linear infinite;
+  will-change: transform;
+}
+
+.logo-grid--marquee:hover {
+  animation-play-state: paused;
 }
 
 .logo-cell {
@@ -581,11 +601,26 @@ main {
   border: 1px solid rgba(23, 33, 30, 0.08);
 }
 
+.logo-grid--marquee .logo-cell {
+  min-width: clamp(170px, 16vw, 220px);
+  flex: 0 0 auto;
+}
+
 .logo-cell img {
   max-height: 72px;
   width: auto;
   object-fit: contain;
   filter: saturate(0.92);
+}
+
+@keyframes logo-marquee {
+  from {
+    transform: translateX(0);
+  }
+
+  to {
+    transform: translateX(calc(-50% - (var(--logo-gap) / 2)));
+  }
 }
 
 .logo-nav {
@@ -1744,6 +1779,16 @@ main {
 
   .logo-cell {
     min-height: 90px;
+  }
+
+  .logo-grid--marquee {
+    --logo-gap: 0.9rem;
+    display: flex;
+    grid-template-columns: none;
+  }
+
+  .logo-grid--marquee .logo-cell {
+    min-width: 150px;
   }
 
   .map-frame iframe {
