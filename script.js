@@ -18,7 +18,7 @@ const NAV_ITEMS = [
   { type: "link", label: "CKD Information", href: "nephrology.html", page: "nephrology" },
   { type: "link", label: "Sponsors", href: "sponsors.html", page: "sponsors" },
   { type: "link", label: "Contact us", href: "contactus.html", page: "contactus" },
-  { type: "link", label: "Registration", href: "registration.html", page: "registration" },
+  { type: "link", label: "Registration", href: "registration.html", page: "registration", navClass: "registration" },
 ];
 
 const OPTION_SETS = {
@@ -222,7 +222,8 @@ function initLogoMarquees() {
 function renderDesktopNavItem(item, page) {
   if (item.type === "link") {
     const active = item.page === page;
-    return `<a class="nav-link ${active ? "is-active" : ""}" href="${item.href}" ${active ? 'aria-current="page"' : ""}>${item.label}</a>`;
+    const itemClass = item.navClass ? ` nav-link--${item.navClass}` : "";
+    return `<a class="nav-link${itemClass} ${active ? "is-active" : ""}" href="${item.href}" ${active ? 'aria-current="page"' : ""}>${item.label}</a>`;
   }
 
   const active = item.items.some((child) => child.page === page);
@@ -244,7 +245,8 @@ function renderDesktopNavItem(item, page) {
 function renderMobileNavItem(item, page) {
   if (item.type === "link") {
     const active = item.page === page;
-    return `<a class="mobile-link ${active ? "is-active" : ""}" href="${item.href}" ${active ? 'aria-current="page"' : ""}>${item.label}</a>`;
+    const itemClass = item.navClass ? ` mobile-link--${item.navClass}` : "";
+    return `<a class="mobile-link${itemClass} ${active ? "is-active" : ""}" href="${item.href}" ${active ? 'aria-current="page"' : ""}>${item.label}</a>`;
   }
 
   const active = item.items.some((child) => child.page === page);

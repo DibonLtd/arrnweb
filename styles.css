@@ -342,6 +342,12 @@ main {
   min-height: 100%;
 }
 
+.hero-media--patient {
+  display: grid;
+  align-items: center;
+  justify-items: center;
+}
+
 .media-stack {
   display: grid;
   grid-template-columns: minmax(0, 1fr);
@@ -369,6 +375,17 @@ main {
 
 .frame--hero {
   min-height: 480px;
+}
+
+.frame--patient-hero {
+  min-height: 340px;
+  max-width: min(420px, 100%);
+  margin-inline: auto;
+}
+
+.frame--mission {
+  min-height: 0;
+  aspect-ratio: 4 / 5;
 }
 
 .frame--float {
@@ -520,6 +537,44 @@ main {
 
 .card-media img {
   transition: transform 420ms ease;
+}
+
+.feature-card__media {
+  aspect-ratio: 16 / 11;
+  background: rgba(175, 122, 66, 0.08);
+}
+
+.feature-card__media::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(180deg, rgba(23, 33, 30, 0.04), rgba(23, 33, 30, 0.28));
+}
+
+.feature-card__media img {
+  object-position: center;
+}
+
+.feature-card__media--team img {
+  object-position: center top;
+}
+
+.feature-card__tag {
+  position: absolute;
+  top: 1rem;
+  left: 1rem;
+  z-index: 1;
+  display: inline-flex;
+  align-items: center;
+  padding: 0.48rem 0.82rem;
+  border-radius: 999px;
+  background: rgba(255, 253, 248, 0.88);
+  color: var(--teal-deep);
+  font-size: 0.74rem;
+  font-weight: 800;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  box-shadow: var(--shadow-soft);
 }
 
 .card-body {
@@ -799,6 +854,36 @@ main {
   min-height: 100%;
 }
 
+.hero-note--visual {
+  align-content: start;
+}
+
+.hero-note__media,
+.sponsor-hero-stack__media,
+.sponsor-panel-media {
+  margin: 0;
+  aspect-ratio: 16 / 10;
+}
+
+.hero-note__eyebrow {
+  margin: 0;
+  color: var(--teal-deep);
+  font-size: 0.78rem;
+  font-weight: 800;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+}
+
+.hero-note .icon-display__badge {
+  background: var(--teal-soft);
+  color: var(--teal-deep);
+  box-shadow: none;
+}
+
+.hero-note .icon-display__label {
+  color: var(--ink);
+}
+
 .hero-note p,
 .metric span {
   margin: 0;
@@ -868,6 +953,11 @@ main {
     radial-gradient(circle at top right, rgba(141, 181, 216, 0.2), transparent 34%),
     linear-gradient(180deg, rgba(252, 253, 255, 0.98), rgba(239, 245, 250, 0.94));
   border: 1px solid rgba(77, 124, 165, 0.14);
+}
+
+.sponsor-hero-stack__media,
+.sponsor-panel-media {
+  border-color: rgba(77, 124, 165, 0.14);
 }
 
 .sponsor-proof-list {
@@ -1189,6 +1279,97 @@ main {
 
 .process-node:nth-child(4) .process-node__icon {
   animation-delay: 1.2s;
+}
+
+.patient-journey {
+  display: grid;
+  gap: 1rem;
+}
+
+.patient-step {
+  display: grid;
+  grid-template-columns: auto minmax(0, 1fr);
+  gap: 1.1rem;
+  padding: 1.2rem;
+  align-items: stretch;
+}
+
+.patient-step__rail {
+  display: grid;
+  grid-template-rows: auto auto 1fr;
+  justify-items: center;
+  gap: 0.65rem;
+}
+
+.patient-step__step {
+  display: inline-grid;
+  place-items: center;
+  width: 2.6rem;
+  height: 2.6rem;
+  border-radius: 999px;
+  background: linear-gradient(135deg, var(--gold), #dfc17b);
+  color: #fffdf8;
+  font-weight: 800;
+  letter-spacing: 0.06em;
+  box-shadow: 0 12px 24px rgba(196, 140, 83, 0.22);
+}
+
+.patient-step__icon {
+  display: inline-grid;
+  place-items: center;
+  width: 3rem;
+  height: 3rem;
+  border-radius: 18px;
+  color: var(--teal-deep);
+  background: rgba(175, 122, 66, 0.12);
+  border: 1px solid rgba(175, 122, 66, 0.18);
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.58);
+}
+
+.patient-step__icon svg {
+  width: 1.4rem;
+  height: 1.4rem;
+  stroke: currentColor;
+  fill: none;
+  stroke-width: 1.8;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+.patient-step__line {
+  width: 2px;
+  min-height: 100%;
+  border-radius: 999px;
+  background: linear-gradient(180deg, rgba(175, 122, 66, 0.26), rgba(125, 83, 39, 0.14));
+}
+
+.patient-step:last-child .patient-step__line {
+  display: none;
+}
+
+.patient-step__content {
+  display: grid;
+  gap: 0.5rem;
+  align-content: center;
+}
+
+.patient-step__label {
+  margin: 0;
+  color: var(--teal-deep);
+  font-size: 0.78rem;
+  font-weight: 800;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+}
+
+.patient-step .card-title {
+  font-size: clamp(1.35rem, 2vw, 1.8rem);
+  line-height: 1.06;
+}
+
+.patient-step__content p:last-child {
+  margin: 0;
+  color: var(--ink-soft);
 }
 
 @keyframes process-sweep {
@@ -1535,6 +1716,13 @@ main {
   color: var(--ink);
   font-weight: 800;
   transition: background var(--transition), color var(--transition), transform var(--transition);
+}
+
+.nav-link--registration,
+.mobile-link--registration {
+  font-family: "Fraunces", serif;
+  font-weight: 600;
+  letter-spacing: -0.02em;
 }
 
 .nav-link:hover,
@@ -2007,6 +2195,24 @@ main {
     padding: 1.15rem;
     min-width: 230px;
     flex: 0 0 82vw;
+  }
+
+  .patient-step {
+    grid-template-columns: minmax(0, 1fr);
+    gap: 0.95rem;
+    padding: 1.05rem;
+  }
+
+  .patient-step__rail {
+    grid-template-columns: auto auto 1fr;
+    grid-template-rows: none;
+    align-items: center;
+  }
+
+  .patient-step__line {
+    width: 100%;
+    min-height: 2px;
+    height: 2px;
   }
 
   .logo-cell {
