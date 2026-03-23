@@ -59,7 +59,7 @@ function renderChrome() {
     headerMount.innerHTML = createHeader(page);
   }
 
-  if (main && page !== "registration") {
+  if (main && page !== "registration" && page !== "sponsors") {
     main.insertAdjacentHTML("beforeend", createRegistrationBand());
   }
 
@@ -73,8 +73,8 @@ function createHeader(page) {
     <header class="site-header" id="top">
       <div class="nav-shell">
         <div class="nav-top">
-          <a class="brand" href="index.html" aria-label="ARRI home">
-            <img src="${SITE_ASSETS.logo}" alt="ARRI">
+          <a class="brand" href="index.html" aria-label="ARRN home">
+            <img src="${SITE_ASSETS.logo}" alt="ARRN">
           </a>
           <nav class="desktop-nav" aria-label="Main">
             ${NAV_ITEMS.map((item) => renderDesktopNavItem(item, page)).join("")}
@@ -87,8 +87,8 @@ function createHeader(page) {
       <div class="mobile-backdrop" data-menu-close></div>
       <aside class="mobile-panel" id="mobile-nav" aria-label="Mobile navigation">
         <div class="mobile-panel__header">
-          <a class="brand" href="index.html" aria-label="ARRI home">
-            <img src="${SITE_ASSETS.logo}" alt="ARRI">
+          <a class="brand" href="index.html" aria-label="ARRN home">
+            <img src="${SITE_ASSETS.logo}" alt="ARRN">
           </a>
           <button class="mobile-close" type="button" aria-label="Close navigation">
             ${closeIcon()}
@@ -109,7 +109,7 @@ function createFooter() {
         <div class="footer-shell">
           <div class="footer-top">
             <div class="footer-brand">
-              <a href="index.html" aria-label="ARRI home">
+              <a href="index.html" aria-label="ARRN home">
                 <img src="${SITE_ASSETS.footerLogo}" alt="Africa Renal Research Network">
               </a>
               <p>Suite 4.3, 4th Floor • Anderson Building • Nairobi Hospital • Nairobi, Kenya</p>
@@ -145,7 +145,7 @@ function createRegistrationBand() {
             <div class="spaced">
               <p class="cta-band__eyebrow">Patient Registration</p>
               <h2 class="title-md">Interested in future kidney-related trials?</h2>
-              <p>Register once and ARRI can contact you if a relevant research or patient outreach opportunity becomes available.</p>
+              <p>Register once and ARRN can contact you if a relevant research or patient outreach opportunity becomes available.</p>
             </div>
             <a class="button button--light" href="registration.html">Register for our trials</a>
           </div>
