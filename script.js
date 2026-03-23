@@ -157,13 +157,34 @@ function createRegistrationBand() {
 
 function initLogoMarquees() {
   const grids = document.querySelectorAll(".logo-grid");
+  const blockedLogoSources = [
+    "website.s_reference_demo_image_5",
+    "Screenshot_2020-10-03_at_17.13.40-removebg-preview.png",
+  ];
 
   grids.forEach((grid) => {
     if (grid.dataset.marqueeReady === "true") {
       return;
     }
 
-    const cells = Array.from(grid.children);
+    const cells = Array.from(grid.children).filter((cell) => {
+      const image = cell.querySelector("img");
+
+      if (!image) {
+        cell.remove();
+        return false;
+      }
+
+      const source = image.getAttribute("src") || "";
+      const isBlocked = blockedLogoSources.some((fragment) => source.includes(fragment));
+
+      if (isBlocked) {
+        cell.remove();
+        return false;
+      }
+
+      return true;
+    });
 
     if (cells.length < 2) {
       return;
@@ -178,7 +199,19 @@ function initLogoMarquees() {
     grid.classList.add("logo-grid--marquee");
     grid.dataset.marqueeReady = "true";
 
-    cells.forEach((cell) => {
+    const marqueeCells = [...cells];
+
+    while (marqueeCells.length < 6) {
+      cells.forEach((cell) => {
+        if (marqueeCells.length < 6) {
+          marqueeCells.push(cell.cloneNode(true));
+        }
+      });
+    }
+
+    grid.replaceChildren(...marqueeCells);
+
+    Array.from(grid.children).forEach((cell) => {
       const clone = cell.cloneNode(true);
       clone.setAttribute("aria-hidden", "true");
       grid.appendChild(clone);
