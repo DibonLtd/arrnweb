@@ -1,10 +1,16 @@
+const SPONSOR_PAGES = ["sponsors", "sponsor-services", "sponsor-resources", "sponsor-clinical-activation"];
+
 const NAV_ITEMS = [
   { label: "Home", href: "index.html", pages: ["home"] },
-  { label: "About Us", href: "mission-and-vision.html", pages: ["mission-and-vision"] },
+  {
+    label: "About Us",
+    href: "mission-and-vision.html",
+    pages: ["mission-and-vision", "our-team"],
+    children: [{ label: "Our Team", href: "our-team.html", pages: ["our-team"] }],
+  },
   { label: "Patients", href: "patients.html", pages: ["patients"] },
-  { label: "Sponsors", href: "sponsors.html", pages: ["sponsors"] },
+  { label: "Sponsors", href: "sponsors.html", pages: SPONSOR_PAGES },
   { label: "Studies", href: "studies.html", pages: ["studies", "nephrology", "autoimmune", "cardiology"] },
-  { label: "Our Team", href: "our-team.html", pages: ["our-team"] },
   { label: "Contact", href: "contactus.html", pages: ["contactus"] },
 ];
 
@@ -47,7 +53,7 @@ function renderChrome() {
     headerMount.innerHTML = createHeader(page);
   }
 
-  if (main && page !== "home" && page !== "registration" && page !== "sponsors" && page !== "studies") {
+  if (main && page !== "home" && page !== "registration" && !SPONSOR_PAGES.includes(page) && page !== "studies") {
     main.insertAdjacentHTML("beforeend", createRegistrationBand());
   }
 
@@ -109,11 +115,13 @@ function createFooter() {
             <div>
               <h2 class="footer-title">Quick Links</h2>
               <nav class="footer-links" aria-label="Quick Links">
-                <a href="mission-and-vision.html">About Us</a>
+                <div class="footer-links__group">
+                  <a href="mission-and-vision.html">About Us</a>
+                  <a class="footer-sublink" href="our-team.html">Our Team</a>
+                </div>
                 <a href="patients.html">Patients</a>
                 <a href="studies.html">Studies</a>
                 <a href="sponsors.html">Sponsors</a>
-                <a href="our-team.html">Our Team</a>
                 <a href="contactus.html">Contact</a>
               </nav>
             </div>
@@ -220,11 +228,46 @@ function initLogoMarquees() {
 
 function renderDesktopNavItem(item, page) {
   const active = item.pages.includes(page);
+
+  if (item.children?.length) {
+    return `
+      <details class="nav-group ${active ? "is-active" : ""}" ${active ? "open" : ""}>
+        <summary>${item.label}</summary>
+        <div class="dropdown-menu">
+          <a class="dropdown-link ${page === "mission-and-vision" ? "is-active" : ""}" href="${item.href}" ${page === "mission-and-vision" ? 'aria-current="page"' : ""}>${item.label}</a>
+          ${item.children
+            .map((child) => {
+              const childActive = child.pages.includes(page);
+              return `<a class="dropdown-link ${childActive ? "is-active" : ""}" href="${child.href}" ${childActive ? 'aria-current="page"' : ""}>${child.label}</a>`;
+            })
+            .join("")}
+        </div>
+      </details>
+    `;
+  }
+
   return `<a class="nav-link ${active ? "is-active" : ""}" href="${item.href}" ${active ? 'aria-current="page"' : ""}>${item.label}</a>`;
 }
 
 function renderMobileNavItem(item, page) {
   const active = item.pages.includes(page);
+
+  if (item.children?.length) {
+    return `
+      <div class="mobile-group ${active ? "is-active" : ""}">
+        <a class="mobile-link ${page === "mission-and-vision" ? "is-active" : ""}" href="${item.href}" ${page === "mission-and-vision" ? 'aria-current="page"' : ""}>${item.label}</a>
+        <div class="mobile-group__items">
+          ${item.children
+            .map((child) => {
+              const childActive = child.pages.includes(page);
+              return `<a class="mobile-sublink ${childActive ? "is-active" : ""}" href="${child.href}" ${childActive ? 'aria-current="page"' : ""}>${child.label}</a>`;
+            })
+            .join("")}
+        </div>
+      </div>
+    `;
+  }
+
   return `<a class="mobile-link ${active ? "is-active" : ""}" href="${item.href}" ${active ? 'aria-current="page"' : ""}>${item.label}</a>`;
 }
 
