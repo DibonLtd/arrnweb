@@ -242,7 +242,7 @@ function renderDesktopNavItem(item, page) {
   if (item.children?.length) {
     const parentActive = page === item.pages[0];
     return `
-      <details class="nav-group ${active ? "is-active" : ""}" ${active ? "open" : ""}>
+      <details class="nav-group ${active ? "is-active" : ""}">
         <summary>${item.label}</summary>
         <div class="dropdown-menu">
           <a class="dropdown-link ${parentActive ? "is-active" : ""}" href="${item.href}" ${parentActive ? 'aria-current="page"' : ""}>${item.label}</a>
@@ -290,6 +290,7 @@ function initMenu() {
   const backdrop = document.querySelector("[data-menu-close]");
   const mobileLinks = document.querySelectorAll(".mobile-link, .mobile-group__items a");
   const desktopGroups = document.querySelectorAll(".nav-group");
+  const desktopLinks = document.querySelectorAll(".dropdown-link");
 
   if (openButton) {
     openButton.addEventListener("click", () => {
@@ -314,6 +315,11 @@ function initMenu() {
   }
 
   mobileLinks.forEach((link) => link.addEventListener("click", closeMenu));
+  desktopLinks.forEach((link) =>
+    link.addEventListener("click", () => {
+      desktopGroups.forEach((group) => group.removeAttribute("open"));
+    })
+  );
 
   document.addEventListener("keydown", (event) => {
     if (event.key === "Escape") {

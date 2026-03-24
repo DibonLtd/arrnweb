@@ -6,6 +6,7 @@
   --surface-muted: rgba(251, 245, 238, 0.92);
   --ink: #5d2a05;
   --ink-soft: rgba(93, 42, 5, 0.68);
+  --cta-band-bg: #c79a72;
   --teal: #9f4f0b;
   --teal-deep: #874208;
   --teal-soft: rgba(159, 79, 11, 0.1);
@@ -692,21 +693,15 @@ main {
 
 .cta-band {
   padding: clamp(1.6rem, 3vw, 2.6rem);
-  color: #fefcf6;
+  color: var(--ink);
   border-radius: var(--radius-xl);
-  background:
-    linear-gradient(135deg, rgba(42, 28, 16, 0.84), rgba(175, 122, 66, 0.82)),
-    var(--band-image, linear-gradient(135deg, rgba(175, 122, 66, 0.6), rgba(125, 83, 39, 0.95)));
-  background-position: center;
-  background-size: cover;
-  border: 1px solid rgba(255, 250, 242, 0.18);
-  box-shadow: 0 28px 80px rgba(23, 33, 30, 0.22);
+  background: var(--cta-band-bg);
+  border: 1px solid rgba(93, 42, 5, 0.12);
+  box-shadow: 0 22px 54px rgba(86, 41, 11, 0.14);
 }
 
 .cta-band::before {
-  background:
-    radial-gradient(circle at top left, rgba(255, 255, 255, 0.16), transparent 30%),
-    radial-gradient(circle at bottom right, rgba(255, 255, 255, 0.1), transparent 40%);
+  background: none;
 }
 
 .cta-band h2,
@@ -720,11 +715,11 @@ main {
   font-weight: 800;
   letter-spacing: 0.16em;
   text-transform: uppercase;
-  color: rgba(255, 250, 242, 0.78);
+  color: rgba(93, 42, 5, 0.7);
 }
 
 .cta-band--register {
-  background: rgba(42, 28, 16, 0.92);
+  background: var(--cta-band-bg);
 }
 
 .cta-band__inner {
@@ -1343,9 +1338,14 @@ main {
 }
 
 .sponsor-cta-band {
-  background:
-    radial-gradient(circle at top left, rgba(255, 255, 255, 0.16), transparent 34%),
-    linear-gradient(135deg, rgba(42, 28, 16, 0.92), rgba(175, 122, 66, 0.88));
+  background: var(--cta-band-bg);
+}
+
+.cta-band .button--light {
+  background: rgba(255, 253, 249, 0.94);
+  color: var(--ink);
+  border-color: rgba(93, 42, 5, 0.14);
+  box-shadow: var(--shadow-soft);
 }
 
 .process-header {
