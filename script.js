@@ -35,6 +35,7 @@ const OPTION_SETS = {
 
 document.addEventListener("DOMContentLoaded", () => {
   renderChrome();
+  initSponsorTabs();
   initLogoMarquees();
   initMenu();
   initRevealObserver();
@@ -337,6 +338,60 @@ function initMenu() {
       group.removeAttribute("open");
     });
   });
+}
+
+function initSponsorTabs() {
+  const tabNav = document.querySelector("[data-sponsor-tabs]");
+
+  if (!tabNav) {
+    return;
+  }
+
+  const links = Array.from(tabNav.querySelectorAll("[data-sponsor-tab-link]"));
+  const panels = Array.from(document.querySelectorAll("[data-sponsor-panel]"));
+  const panelNames = new Set(panels.map((panel) => panel.dataset.sponsorPanel));
+
+  const getTarget = () => {
+    const hash = window.location.hash.replace("#", "").trim();
+    return panelNames.has(hash) ? hash : "overview";
+  };
+
+  const activateTab = (target, updateHistory = false) => {
+    const activeTarget = panelNames.has(target) ? target : "overview";
+
+    links.forEach((link) => {
+      const isActive = link.dataset.sponsorTabLink === activeTarget;
+      link.classList.toggle("is-active", isActive);
+
+      if (isActive) {
+        link.setAttribute("aria-current", "page");
+      } else {
+        link.removeAttribute("aria-current");
+      }
+    });
+
+    panels.forEach((panel) => {
+      panel.hidden = panel.dataset.sponsorPanel !== activeTarget;
+    });
+
+    if (updateHistory) {
+      const nextHash = activeTarget === "overview" ? "#overview" : `#${activeTarget}`;
+      window.history.pushState(null, "", nextHash);
+    }
+  };
+
+  links.forEach((link) => {
+    link.addEventListener("click", (event) => {
+      event.preventDefault();
+      activateTab(link.dataset.sponsorTabLink, true);
+    });
+  });
+
+  window.addEventListener("hashchange", () => {
+    activateTab(getTarget());
+  });
+
+  activateTab(getTarget());
 }
 
 function initRevealObserver() {

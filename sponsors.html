@@ -31,16 +31,16 @@
 
       <section class="section">
         <div class="container">
-          <nav class="sponsor-tab-nav surface" aria-label="Sponsor sections" data-reveal>
-            <a class="sponsor-tab-link is-active" href="sponsors.html" aria-current="page">Overview</a>
-            <a class="sponsor-tab-link" href="sponsor-services.html">Services</a>
-            <a class="sponsor-tab-link" href="sponsor-resources.html">Resources</a>
-            <a class="sponsor-tab-link" href="sponsor-clinical-activation.html">Clinical Activation</a>
+          <nav class="sponsor-tab-nav surface" aria-label="Sponsor sections" data-reveal data-sponsor-tabs>
+            <a class="sponsor-tab-link is-active" href="#overview" data-sponsor-tab-link="overview" aria-current="page">Overview</a>
+            <a class="sponsor-tab-link" href="#services" data-sponsor-tab-link="services">Services</a>
+            <a class="sponsor-tab-link" href="#resources" data-sponsor-tab-link="resources">Resources</a>
+            <a class="sponsor-tab-link" href="#clinical-activation" data-sponsor-tab-link="clinical-activation">Clinical Activation</a>
           </nav>
         </div>
       </section>
 
-      <section class="section">
+      <section class="section sponsor-tab-panel" data-sponsor-panel="overview">
         <div class="container spaced">
           <div class="page-header" data-reveal>
             <h2 class="title-md">Why Partner With ARRI?</h2>
@@ -115,35 +115,216 @@
         </div>
       </section>
 
-      <section class="section">
+      <section class="section sponsor-tab-panel" data-sponsor-panel="services" hidden>
         <div class="container">
           <div class="page-header" data-reveal>
-            <h2 class="title-md">Sponsor Sections</h2>
-            <p class="text-muted">Open each sponsor page from the tabs above or use the cards below.</p>
+            <h2 class="title-md">Full Clinical Trial Support</h2>
+            <p class="text-muted">Operational services designed to help sponsors launch and run trials with speed, consistency, and compliance.</p>
           </div>
-          <div class="card-grid card-grid--three">
-            <article class="sponsor-summary-card surface" data-reveal>
-              <div class="page-header">
-                <h2 class="title-md">Services</h2>
-                <p class="text-muted">Clinical trial support across training, nursing coordination, quality assurance, infusion, and pharmacy operations.</p>
-              </div>
-              <a class="link-pill" href="sponsor-services.html">Open services</a>
+          <div class="card-grid card-grid--three sponsor-service-grid">
+            <article class="sponsor-service-card surface" data-reveal>
+              <span class="research-focus-card__icon" aria-hidden="true">
+                <svg viewBox="0 0 24 24">
+                  <path d="M12 3l7 3v5c0 4.2-2.6 8-7 10-4.4-2-7-5.8-7-10V6l7-3Z"></path>
+                  <path d="m9 12 2 2 4-4"></path>
+                </svg>
+              </span>
+              <h3 class="card-title">Investigator Training</h3>
             </article>
 
-            <article class="sponsor-summary-card surface" data-reveal style="--delay: 100ms;">
-              <div class="page-header">
-                <h2 class="title-md">Resources</h2>
-                <p class="text-muted">Clinical space, patient-care setup, equipment, safety systems, and site operations in one dedicated section.</p>
-              </div>
-              <a class="link-pill" href="sponsor-resources.html">Open resources</a>
+            <article class="sponsor-service-card surface" data-reveal style="--delay: 70ms;">
+              <span class="research-focus-card__icon" aria-hidden="true">
+                <svg viewBox="0 0 24 24">
+                  <path d="M8 10a3 3 0 1 0 0-6 3 3 0 0 0 0 6Z"></path>
+                  <path d="M16.5 11.5a2.5 2.5 0 1 0 0-5 2.5 2.5 0 0 0 0 5Z"></path>
+                  <path d="M3.5 20a5 5 0 0 1 9 0"></path>
+                  <path d="M13 20a4.5 4.5 0 0 1 7 0"></path>
+                </svg>
+              </span>
+              <h3 class="card-title">Coordination / Nursing Support</h3>
             </article>
 
-            <article class="sponsor-summary-card surface" data-reveal style="--delay: 200ms;">
-              <div class="page-header">
-                <h2 class="title-md">Clinical Activation</h2>
-                <p class="text-muted">Review ARRI's start-up workflow, parallel execution model, and average site activation timeline.</p>
+            <article class="sponsor-service-card surface" data-reveal style="--delay: 140ms;">
+              <span class="research-focus-card__icon" aria-hidden="true">
+                <svg viewBox="0 0 24 24">
+                  <path d="M4 19h16"></path>
+                  <path d="M7 15V9"></path>
+                  <path d="M12 15V5"></path>
+                  <path d="M17 15v-3"></path>
+                </svg>
+              </span>
+              <h3 class="card-title">Quality Assurance</h3>
+            </article>
+
+            <article class="sponsor-service-card surface" data-reveal style="--delay: 210ms;">
+              <span class="research-focus-card__icon" aria-hidden="true">
+                <svg viewBox="0 0 24 24">
+                  <path d="m18 2 4 4"></path>
+                  <path d="m17 7 3-3"></path>
+                  <path d="M19 9 8.7 19.3c-1 1-2.5 1-3.4 0l-.6-.6c-1-1-1-2.5 0-3.4L15 5"></path>
+                  <path d="m9 11 4 4"></path>
+                </svg>
+              </span>
+              <h3 class="card-title">Infusion Administration</h3>
+            </article>
+
+            <article class="sponsor-service-card surface" data-reveal style="--delay: 280ms;">
+              <span class="research-focus-card__icon" aria-hidden="true">
+                <svg viewBox="0 0 24 24">
+                  <path d="M4 7.5h14"></path>
+                  <path d="M7 4.5h10a2 2 0 0 1 2 2v11a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2v-11a2 2 0 0 1 2-2Z"></path>
+                  <path d="M8.5 11h7"></path>
+                  <path d="M8.5 14.5h4.5"></path>
+                </svg>
+              </span>
+              <h3 class="card-title">In-house Pharmacy</h3>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <section class="section sponsor-tab-panel" data-sponsor-panel="resources" hidden>
+        <div class="container">
+          <div class="page-header" data-reveal>
+            <h2 class="title-md">Site and Trial Resources</h2>
+            <p class="text-muted">Infrastructure prepared for sponsor-grade operations and patient visits.</p>
+          </div>
+          <div class="resource-groups">
+            <section class="resource-group surface" data-reveal>
+              <h3 class="resource-group__title">Clinical Space</h3>
+              <ul class="sponsor-catalog-list">
+                <li>Dedicated exam room</li>
+                <li>Dedicated infusion room</li>
+                <li>Lab processing area</li>
+                <li>Access to local lab</li>
+                <li>On-site investigational pharmacy</li>
+              </ul>
+            </section>
+
+            <section class="resource-group surface" data-reveal style="--delay: 70ms;">
+              <h3 class="resource-group__title">Patient Care</h3>
+              <ul class="sponsor-catalog-list">
+                <li>Basic medical supplies</li>
+                <li>Vital signs, height and weight measurement</li>
+                <li>On-site infusions</li>
+                <li>Patient meal services</li>
+                <li>EKG machine</li>
+              </ul>
+            </section>
+
+            <section class="resource-group surface" data-reveal style="--delay: 140ms;">
+              <h3 class="resource-group__title">Equipment &amp; Safety</h3>
+              <ul class="sponsor-catalog-list">
+                <li>IV infusion pumps</li>
+                <li>Refrigerated centrifuge</li>
+                <li>Ambient centrifuge</li>
+                <li>Emergency cart</li>
+                <li>AED</li>
+                <li>Oxygen tank and cannulas</li>
+              </ul>
+            </section>
+
+            <section class="resource-group surface" data-reveal style="--delay: 210ms;">
+              <h3 class="resource-group__title">Operations &amp; Access</h3>
+              <ul class="sponsor-catalog-list">
+                <li>High speed internet</li>
+                <li>Secure limited access areas</li>
+                <li>Temperature control storage for drugs with limited access</li>
+                <li>Abundant parking</li>
+                <li>Public transportation with convenient drop-off/pickup</li>
+              </ul>
+            </section>
+          </div>
+        </div>
+      </section>
+
+      <section class="section sponsor-tab-panel" data-sponsor-panel="clinical-activation" hidden>
+        <div class="container">
+          <div class="process-header" data-reveal>
+            <p class="sponsor-kicker">Start-Up Process</p>
+            <h2 class="title-md">Efficient clinical trial activation</h2>
+            <p class="text-muted">The startup process is an important part of the clinical trial and delays can have a huge impact on the cost of a study and ultimately the cost to develop a drug. At African Renal Research Institute, we have an efficient start up process. From site selection to study activation, it takes average of 6 weeks. We use central IRB to expedite start-up process. In addition, contract, budget, and regulatory all can be done in parallel.</p>
+          </div>
+
+          <div class="process-grid sponsor-startup-flow">
+            <article class="process-node" data-reveal>
+              <div class="process-node__top">
+                <span class="process-node__icon" aria-hidden="true">
+                  <svg viewBox="0 0 24 24">
+                    <path d="M12 21s7-4.4 7-11a7 7 0 1 0-14 0c0 6.6 7 11 7 11Z"></path>
+                    <circle cx="12" cy="10" r="2.5"></circle>
+                  </svg>
+                </span>
               </div>
-              <a class="link-pill" href="sponsor-clinical-activation.html">Open activation</a>
+              <div class="process-node__copy">
+                <h3 class="card-title">01. Site Selection</h3>
+                <p>We move quickly from sponsor discussion into site selection so feasibility work begins without delay.</p>
+              </div>
+            </article>
+
+            <article class="process-node" data-reveal style="--delay: 70ms;">
+              <div class="process-node__top">
+                <span class="process-node__icon" aria-hidden="true">
+                  <svg viewBox="0 0 24 24">
+                    <path d="M12 3l7 3v5c0 4.2-2.6 8-7 10-4.4-2-7-5.8-7-10V6l7-3Z"></path>
+                    <path d="m9 12 2 2 4-4"></path>
+                  </svg>
+                </span>
+              </div>
+              <div class="process-node__copy">
+                <h3 class="card-title">02. Oversight</h3>
+                <p>We use central IRB pathways to expedite study start-up and reduce approval bottlenecks.</p>
+              </div>
+            </article>
+
+            <article class="process-node" data-reveal style="--delay: 140ms;">
+              <div class="process-node__top">
+                <span class="process-node__icon" aria-hidden="true">
+                  <svg viewBox="0 0 24 24">
+                    <path d="M4 19h16"></path>
+                    <path d="M7 15V9"></path>
+                    <path d="M12 15V5"></path>
+                    <path d="M17 15v-3"></path>
+                  </svg>
+                </span>
+              </div>
+              <div class="process-node__copy">
+                <h3 class="card-title">03. Contract and Budget</h3>
+                <p>Contracting and budget negotiations run in parallel with other activation steps to save time.</p>
+              </div>
+            </article>
+
+            <article class="process-node" data-reveal style="--delay: 210ms;">
+              <div class="process-node__top">
+                <span class="process-node__icon" aria-hidden="true">
+                  <svg viewBox="0 0 24 24">
+                    <path d="M7 4h10"></path>
+                    <path d="M7 8h10"></path>
+                    <path d="M7 12h7"></path>
+                    <path d="M7 16h6"></path>
+                    <path d="m16 18 2 2 4-4"></path>
+                  </svg>
+                </span>
+              </div>
+              <div class="process-node__copy">
+                <h3 class="card-title">04. Regulatory Readiness</h3>
+                <p>Regulatory documents and study activation requirements are prepared alongside budget and contract work.</p>
+              </div>
+            </article>
+
+            <article class="process-node" data-reveal style="--delay: 280ms;">
+              <div class="process-node__top">
+                <span class="process-node__icon" aria-hidden="true">
+                  <svg viewBox="0 0 24 24">
+                    <path d="M5 12h14"></path>
+                    <path d="m12 5 7 7-7 7"></path>
+                  </svg>
+                </span>
+              </div>
+              <div class="process-node__copy">
+                <h3 class="card-title">05. Activation</h3>
+                <p>From site selection to study activation, our average startup timeline is approximately 6 weeks.</p>
+              </div>
             </article>
           </div>
         </div>
