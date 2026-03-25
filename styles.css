@@ -795,7 +795,7 @@ main {
   display: grid;
   justify-items: center;
   gap: 1.7rem;
-  padding: clamp(1.7rem, 3.5vw, 3rem);
+  padding: clamp(1.45rem, 3vw, 2.45rem);
 }
 
 .sponsor-page-hero .page-header {
@@ -1983,6 +1983,10 @@ main {
   gap: 1rem;
 }
 
+.registration-form--single {
+  gap: 1.25rem;
+}
+
 .registration-progress {
   display: grid;
   gap: 0.9rem;
@@ -2014,6 +2018,10 @@ main {
 }
 
 .form-step.is-active {
+  display: grid;
+}
+
+.registration-form--single .form-step {
   display: grid;
 }
 
@@ -2130,6 +2138,10 @@ main {
   justify-content: space-between;
   align-items: center;
   gap: 1rem;
+}
+
+.registration-actions--single {
+  justify-content: center;
 }
 
 .registration-actions__primary {

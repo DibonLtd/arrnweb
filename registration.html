@@ -27,8 +27,8 @@
 
       <section class="section">
         <div class="container">
-          <form class="form-card surface surface--strong registration-form" data-static-form="registration-application" data-multistep-form data-reveal>
-              <section class="form-step is-active" data-form-step data-step-title="Personal Details">
+          <form class="form-card surface surface--strong registration-form registration-form--single" data-static-form="registration-application" data-reveal>
+              <section class="form-step is-active">
                 <div class="form-section">
                   <div class="form-section__intro">
                     <h3 class="card-title">Personal Details</h3>
@@ -67,7 +67,7 @@
                 </div>
               </section>
 
-              <section class="form-step" data-form-step data-step-title="Medical Profile" hidden>
+              <section class="form-step is-active">
                 <div class="form-section">
                   <div class="form-section__intro">
                     <h3 class="card-title">Medical Profile</h3>
@@ -111,7 +111,7 @@
                 </div>
               </section>
 
-              <section class="form-step" data-form-step data-step-title="Preferences and Consent" hidden>
+              <section class="form-step is-active">
                 <div class="form-section">
                   <div class="form-section__intro">
                     <h3 class="card-title">Preferences and Consent</h3>
@@ -166,53 +166,17 @@
                 </div>
               </section>
 
-              <section class="form-step" data-form-step data-step-title="Review and Submit" hidden>
-                <div class="form-section">
+              <section class="form-step is-active">
+                <div class="form-section form-section--submit">
                   <div class="form-section__intro">
-                    <h3 class="card-title">Review and Submit</h3>
-                    <p>Check the main details below, then submit your registration to download a copy of the information you provided.</p>
+                    <h3 class="card-title">Submit Registration</h3>
+                    <p>Review your entries above, then submit the form when you are ready.</p>
                   </div>
-
-                  <div class="review-grid">
-                    <article class="review-card">
-                      <p class="review-card__label">Name</p>
-                      <strong data-review="your_name">Not provided</strong>
-                    </article>
-                    <article class="review-card">
-                      <p class="review-card__label">Phone</p>
-                      <strong data-review="phone_number">Not provided</strong>
-                    </article>
-                    <article class="review-card">
-                      <p class="review-card__label">Country</p>
-                      <strong data-review="country">Not provided</strong>
-                    </article>
-                    <article class="review-card">
-                      <p class="review-card__label">Medical Condition</p>
-                      <strong data-review="what_medical_condition_do_you_have">Not provided</strong>
-                    </article>
-                    <article class="review-card">
-                      <p class="review-card__label">Contact Method</p>
-                      <strong data-review="best_contact_method">Not provided</strong>
-                    </article>
-                    <article class="review-card">
-                      <p class="review-card__label">Heard About ARRI</p>
-                      <strong data-review="how_did_you_hear_about_us">Not provided</strong>
-                    </article>
-                    <article class="review-card review-card--wide">
-                      <p class="review-card__label">Consent</p>
-                      <strong data-review="required_checkbox">Not provided</strong>
-                    </article>
+                  <div class="registration-actions registration-actions--single">
+                    <button class="button" type="submit">Submit Registration</button>
                   </div>
                 </div>
               </section>
-
-              <div class="registration-actions">
-                <button class="button button--ghost" type="button" data-step-prev disabled>Back</button>
-                <div class="registration-actions__primary">
-                  <button class="button button--secondary" type="button" data-step-next>Continue</button>
-                  <button class="button" type="submit" data-step-submit hidden>Submit Registration</button>
-                </div>
-              </div>
           </form>
         </div>
       </section>
