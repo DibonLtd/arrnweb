@@ -248,6 +248,10 @@ main {
   text-align: center;
 }
 
+.text-gold {
+  color: var(--gold);
+}
+
 .text-muted {
   color: var(--ink-soft);
 }
